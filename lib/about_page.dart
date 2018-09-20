@@ -12,12 +12,10 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     var slivers = <Widget>[];
-    slivers.add(SliverAppBar(
-      title: Text('About'),
-    ));
     final lines = [
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(
+            top: 30.0, left: 8.0, right: 8.0, bottom: 8.0),
         child: Center(
           child: Text(
             '10/20 - 10/21 @ 台大管理學院',
@@ -59,17 +57,37 @@ class _AboutPageState extends State<AboutPage> {
 
     final text = SliverList(
       delegate: SliverChildListDelegate([
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-            children: lines)
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: lines)
       ]),
     );
     slivers.add(text);
 
     return Scaffold(
-      body: Scrollbar(
-        child: CustomScrollView(
-          slivers: slivers,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              expandedHeight: 240.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Image.asset(
+                  "assets/banner.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )
+          ];
+        },
+        body: Scrollbar(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 640.0),
+              child: Scrollbar(
+                child: CustomScrollView(
+                  slivers: slivers,
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
