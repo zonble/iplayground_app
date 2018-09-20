@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:iplayground/about_page.dart';
 import 'package:iplayground/schedule_page.dart';
 
 void main() => runApp(new MyApp());
@@ -30,15 +31,15 @@ class PlaygroundHomePage extends StatefulWidget {
 }
 
 class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
-  List<Map> day1 = [];
-  List<Map> day2 = [];
+  List<dynamic> day1 = [];
+  List<dynamic> day2 = [];
   int selectedIndex = 0;
 
   void _loadSchedule() async {
     var scheduleString = await rootBundle.loadString('assets/schedule.json');
     Map schedule = json.decode(scheduleString);
     setState(() {
-      print(schedule);
+//      print(schedule);
       day1 = schedule["day_1"];
       day2 = schedule["day_2"];
     });
@@ -57,7 +58,8 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
         BottomNavigationBarItem(
             icon: Icon(Icons.schedule), title: Text('Day 1')),
         BottomNavigationBarItem(
-            icon: Icon(Icons.schedule), title: Text('Day 2'))
+            icon: Icon(Icons.schedule), title: Text('Day 2')),
+        BottomNavigationBarItem(icon: Icon(Icons.info), title: Text('About')),
       ],
       onTap: (index) {
         this.setState(() {
@@ -75,6 +77,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
         title: 'Day 2',
         schedule: day2,
       ),
+      AboutPage()
     ];
 
     return new Scaffold(

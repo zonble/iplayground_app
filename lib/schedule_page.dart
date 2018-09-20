@@ -107,7 +107,7 @@ class ScheduleRow extends StatelessWidget {
 
 class SchedulePage extends StatelessWidget {
   final String title;
-  final List<Map> schedule;
+  final List<dynamic> schedule;
 
   SchedulePage({Key key, this.title, this.schedule}) : super(key: key);
 
