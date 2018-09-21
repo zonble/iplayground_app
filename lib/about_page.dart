@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatefulWidget {
   AboutPage({Key key, this.title}) : super(key: key);
@@ -34,14 +35,39 @@ class _AboutPageState extends State<AboutPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset('assets/svg_twitter.svg'),
-            SvgPicture.asset('assets/svg_facebook.svg'),
-            SvgPicture.asset('assets/svg_share.svg'),
+            GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset('assets/svg_twitter.png'),
+              ),
+              onTap: () async {
+                await launch('https://twitter.com/theiPlayground');
+              },
+            ),
+            GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset('assets/svg_facebook.png'),
+              ),
+              onTap: () async {
+                await launch('https://www.facebook.com/theiPlayground/');
+              },
+            ),
+            GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset('assets/svg_share.png'),
+              ),
+              onTap: () async {
+                await launch('https://mastodon.technology/@iplayground');
+              },
+            ),
           ],
         ),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(
+            top: 20.0, left: 8.0, right: 8.0, bottom: 8.0),
         child: Center(
           child: Text(
             '活動緣起',

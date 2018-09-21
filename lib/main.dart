@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:iplayground/about_page.dart';
@@ -38,7 +39,6 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
     var scheduleString = await rootBundle.loadString('assets/schedule.json');
     Map schedule = json.decode(scheduleString);
     setState(() {
-//      print(schedule);
       day1 = schedule["day_1"];
       day2 = schedule["day_2"];
     });
@@ -50,15 +50,17 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
     this._loadSchedule();
   }
 
+  TabController tabController;
+
   @override
   Widget build(BuildContext context) {
-    var bottom = BottomNavigationBar(
+    var bottom = CupertinoTabBar(
       items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.schedule), title: Text('Day 1')),
         BottomNavigationBarItem(
             icon: Icon(Icons.schedule), title: Text('Day 2')),
-        BottomNavigationBarItem(icon: Icon(Icons.info), title: Text('About')),
+        BottomNavigationBarItem(icon: Icon(Icons.info), title: Text('關於')),
       ],
       onTap: (index) {
         this.setState(() {
@@ -67,20 +69,30 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
       },
       currentIndex: this.selectedIndex,
     );
-    final bodies = [
-      SchedulePage(
-        title: 'Day 1',
-        schedule: day1,
-      ),
-      SchedulePage(
-        title: 'Day 2',
-        schedule: day2,
-      ),
-      AboutPage()
-    ];
+
+    final stack = Stack(
+      children: <Widget>[
+        Offstage(
+          offstage: this.selectedIndex != 0,
+          child: SchedulePage(
+            title: 'Day 1',
+            schedule: day1,
+          ),
+        ),
+        Offstage(
+          offstage: this.selectedIndex != 1,
+          child: SchedulePage(
+            title: 'Day 2',
+            schedule: day2,
+          ),
+        ),
+        Offstage(offstage: this.selectedIndex != 2, child: AboutPage())
+      ],
+    );
+
 
     return new Scaffold(
-      body: bodies[selectedIndex],
+      body: stack,
       bottomNavigationBar: bottom,
     );
   }

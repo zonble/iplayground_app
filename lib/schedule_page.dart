@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleItem extends StatelessWidget {
@@ -115,8 +116,8 @@ class SchedulePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var slivers = <Widget>[];
 
-    slivers.add(SliverAppBar(
-      title: Text(this.title),
+    slivers.add(CupertinoSliverNavigationBar(
+      middle: Text(this.title),
     ));
 
     final list = SliverList(
