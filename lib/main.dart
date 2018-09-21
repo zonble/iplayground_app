@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:iplayground/about_page.dart';
 import 'package:iplayground/schedule_page.dart';

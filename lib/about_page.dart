@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AboutPage extends StatefulWidget {
   AboutPage({Key key, this.title}) : super(key: key);
@@ -28,6 +29,16 @@ class _AboutPageState extends State<AboutPage> {
         padding: const EdgeInsets.all(8.0),
         child: Text(
             'iPlayground 是在台北舉辦的 Apple 軟體開發相關的研討會，名字來自於 Xcode 內建的開發工具 Playground，我們希望開發者、設計師、QA、PM 都可以在這邊交換想法，分享所學我們歡迎有興趣的朋友一同加入 iPlayground 並且認識更多同好。'),
+      ),
+      Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SvgPicture.asset('assets/svg_twitter.svg'),
+            SvgPicture.asset('assets/svg_facebook.svg'),
+            SvgPicture.asset('assets/svg_share.svg'),
+          ],
+        ),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
