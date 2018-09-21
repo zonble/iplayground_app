@@ -118,10 +118,8 @@ class _AboutPageState extends State<AboutPage> {
           child: Center(
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 640.0),
-              child: Scrollbar(
-                child: CustomScrollView(
-                  slivers: slivers,
-                ),
+              child: CustomScrollView(
+                slivers: slivers,
               ),
             ),
           ),

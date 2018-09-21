@@ -117,7 +117,7 @@ class SchedulePage extends StatelessWidget {
     var slivers = <Widget>[];
 
     slivers.add(CupertinoSliverNavigationBar(
-      middle: Text(this.title),
+      largeTitle: Text(this.title),
     ));
 
     final list = SliverList(
