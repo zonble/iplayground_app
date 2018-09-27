@@ -1,29 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iplayground/schedule_loader.dart';
 
-class ScheduleItem extends StatelessWidget {
-  final Map<dynamic, dynamic> data;
+class ScheduleCell extends StatelessWidget {
+  final ScheduleItem data;
+  final int flex;
 
-  ScheduleItem({Key key, this.data}) : super(key: key);
+  ScheduleCell({Key key, this.data, this.flex = 2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 2,
+      flex: this.flex,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              data["topic"],
+              data.title,
               style: TextStyle(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(data["presenter"], textAlign: TextAlign.center),
+            child: Text(data.presenter, textAlign: TextAlign.center),
           )
         ],
       ),
@@ -32,7 +34,7 @@ class ScheduleItem extends StatelessWidget {
 }
 
 class ScheduleRow extends StatelessWidget {
-  final Map<dynamic, dynamic> data;
+  final ScheduleContainer data;
   final bool hasDivider;
 
   ScheduleRow({Key key, this.data, this.hasDivider = true}) : super(key: key);
@@ -46,41 +48,28 @@ class ScheduleRow extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            Text(this.data["start"]),
-            Text(this.data["end"]),
+            Text(this.data.startTime),
+            Text(this.data.endTime),
           ],
         ),
       ),
     );
     widgets.add(dateColumn);
 
-    if (this.data["rest"] != null) {
-      var rest = Expanded(
+    if (this.data.all != null) {
+      widgets.add(ScheduleCell(
+        data: this.data.all,
         flex: 4,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[Text(this.data["rest"])],
-        ),
-      );
-      widgets.add(rest);
-    }
-    if (this.data["talks"] != null) {
-      final List talks = this.data["talks"];
-      widgets.add(ScheduleItem(
-        data: talks[0],
       ));
-
-      if (talks.length == 1) {
-        final empty = Expanded(
-          flex: 2,
-          child: Container(),
-        );
-        widgets.add(empty);
-      } else if (talks.length == 2) {
-        widgets.add(ScheduleItem(
-          data: talks[1],
-        ));
-      }
+    } else {
+      widgets.add(ScheduleCell(
+        data: this.data.a,
+        flex: 2,
+      ));
+      widgets.add(ScheduleCell(
+        data: this.data.b,
+        flex: 2,
+      ));
     }
 
     var children = <Widget>[];

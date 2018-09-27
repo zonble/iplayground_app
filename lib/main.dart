@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:iplayground/about_page.dart';
+import 'package:iplayground/schedule_loader.dart';
 import 'package:iplayground/schedule_page.dart';
 
 void main() => runApp(new MyApp());
@@ -35,19 +36,20 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
   List<dynamic> day2 = [];
   int selectedIndex = 0;
 
-  void _loadSchedule() async {
-    var scheduleString = await rootBundle.loadString('assets/schedule.json');
+  void _loadSession() async {
+    final scheduleString = await rootBundle.loadString('assets/sessions.json');
     Map schedule = json.decode(scheduleString);
+    final days = ScheduleParser.parse(schedule);
     setState(() {
-      day1 = schedule["day_1"];
-      day2 = schedule["day_2"];
+      day1 = days[0];
+      day2 = days[1];
     });
   }
 
   @override
   void initState() {
     super.initState();
-    this._loadSchedule();
+    this._loadSession();
   }
 
   TabController tabController;
@@ -89,7 +91,6 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
         Offstage(offstage: this.selectedIndex != 2, child: AboutPage())
       ],
     );
-
 
     return new Scaffold(
       body: stack,

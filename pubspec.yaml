@@ -40,6 +40,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/schedule.json
+    - assets/sessions.json
     - assets/banner.png
     - assets/svg_facebook.png
     - assets/svg_twitter.png
