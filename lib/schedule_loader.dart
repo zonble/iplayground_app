@@ -1,3 +1,8 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:http/http.dart';
+
 class ScheduleItem {
   int day;
   String startTime;
@@ -10,7 +15,7 @@ class ScheduleItem {
   String trackName;
   String description;
 
-  ScheduleItem(Map<String, dynamic> map) {
+  ScheduleItem.fromMap(Map<String, dynamic> map) {
     this
       ..day = map['conference_day'] ?? 0
       ..startTime = map['start_time'] ?? ''
@@ -33,14 +38,36 @@ class ScheduleContainer {
   ScheduleItem all;
 }
 
-class ScheduleParser {
+const String jsonUrl =
+    'https://raw.githubusercontent.com/zonble/iplayground_app/master/data/sessions.json';
+
+class ScheduleLoader {
+  static ScheduleLoader shared = ScheduleLoader();
+  List<ScheduleContainer> day1;
+  List<ScheduleContainer> day2;
+  StreamController _controller = StreamController.broadcast();
+
+  Stream get didUpdate => _controller.stream;
+
+  load() async {
+    final response = await get(jsonUrl);
+    if (response.statusCode != 200) {
+      throw Exception('Failed to load');
+    }
+    Map schedule = json.decode(response.body);
+    final days = ScheduleLoader.parse(schedule);
+    this.day1 = days[0];
+    this.day2 = days[1];
+    _controller.add(this);
+  }
+
   static List<List<ScheduleContainer>> parse(Map<String, dynamic> map) {
     final List sessions = map['sessions'];
     if (sessions is List == false) {
       throw Exception('Unable to find sessions');
     }
     List<ScheduleItem> allItems =
-        sessions.map((map) => ScheduleItem(map)).toList();
+        sessions.map((map) => ScheduleItem.fromMap(map)).toList();
 
     group(List<ScheduleItem> items) {
       List<ScheduleContainer> containerList = [];

@@ -37,18 +37,13 @@ enum _ViewState { initial, loading, error, loaded }
 
 class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
   _ViewState _viewState = _ViewState.initial;
-  List<dynamic> _day1 = [];
-  List<dynamic> _day2 = [];
   int _selectedIndex = 0;
 
   void _loadSession() async {
-    final scheduleString = await rootBundle.loadString('assets/sessions.json');
-    Map schedule = json.decode(scheduleString);
-    final days = ScheduleParser.parse(schedule);
-    setState(() {
-      _day1 = days[0];
-      _day2 = days[1];
+    ScheduleLoader.shared.didUpdate.listen((parser) {
+      this.setState(() => this._viewState = _ViewState.loaded);
     });
+    ScheduleLoader.shared.load();
   }
 
   @override
@@ -82,14 +77,14 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
           offstage: this._selectedIndex != 0,
           child: SchedulePage(
             title: 'Day 1',
-            schedule: _day1,
+            schedule: ScheduleLoader.shared.day1,
           ),
         ),
         Offstage(
           offstage: this._selectedIndex != 1,
           child: SchedulePage(
             title: 'Day 2',
-            schedule: _day2,
+            schedule: ScheduleLoader.shared.day2,
           ),
         ),
         Offstage(offstage: this._selectedIndex != 2, child: AboutPage())
@@ -104,13 +99,12 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     switch (this._viewState) {
       case _ViewState.initial:
       case _ViewState.loading:
         return MainLoading();
       case _ViewState.error:
-        return MainError();
+        return MainError(onTap: () async => await ScheduleLoader.shared.load(),);
       default:
         break;
     }
