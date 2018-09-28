@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:iplayground/about_page.dart';
+import 'package:iplayground/main_error.dart';
+import 'package:iplayground/main_loading.dart';
 import 'package:iplayground/schedule_loader.dart';
 import 'package:iplayground/schedule_page.dart';
 
@@ -31,18 +33,21 @@ class PlaygroundHomePage extends StatefulWidget {
   _PlaygroundHomePageState createState() => new _PlaygroundHomePageState();
 }
 
+enum _ViewState { initial, loading, error, loaded }
+
 class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
-  List<dynamic> day1 = [];
-  List<dynamic> day2 = [];
-  int selectedIndex = 0;
+  _ViewState _viewState = _ViewState.initial;
+  List<dynamic> _day1 = [];
+  List<dynamic> _day2 = [];
+  int _selectedIndex = 0;
 
   void _loadSession() async {
     final scheduleString = await rootBundle.loadString('assets/sessions.json');
     Map schedule = json.decode(scheduleString);
     final days = ScheduleParser.parse(schedule);
     setState(() {
-      day1 = days[0];
-      day2 = days[1];
+      _day1 = days[0];
+      _day2 = days[1];
     });
   }
 
@@ -54,8 +59,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
 
   TabController tabController;
 
-  @override
-  Widget build(BuildContext context) {
+  Widget buildPerfect(BuildContext context) {
     var bottom = CupertinoTabBar(
       items: [
         BottomNavigationBarItem(
@@ -66,29 +70,29 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
       ],
       onTap: (index) {
         this.setState(() {
-          this.selectedIndex = index;
+          this._selectedIndex = index;
         });
       },
-      currentIndex: this.selectedIndex,
+      currentIndex: this._selectedIndex,
     );
 
     final stack = Stack(
       children: <Widget>[
         Offstage(
-          offstage: this.selectedIndex != 0,
+          offstage: this._selectedIndex != 0,
           child: SchedulePage(
             title: 'Day 1',
-            schedule: day1,
+            schedule: _day1,
           ),
         ),
         Offstage(
-          offstage: this.selectedIndex != 1,
+          offstage: this._selectedIndex != 1,
           child: SchedulePage(
             title: 'Day 2',
-            schedule: day2,
+            schedule: _day2,
           ),
         ),
-        Offstage(offstage: this.selectedIndex != 2, child: AboutPage())
+        Offstage(offstage: this._selectedIndex != 2, child: AboutPage())
       ],
     );
 
@@ -96,5 +100,21 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
       body: stack,
       bottomNavigationBar: bottom,
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    switch (this._viewState) {
+      case _ViewState.initial:
+      case _ViewState.loading:
+        return MainLoading();
+      case _ViewState.error:
+        return MainError();
+      default:
+        break;
+    }
+
+    return this.buildPerfect(context);
   }
 }
