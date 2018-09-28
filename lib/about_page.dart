@@ -11,10 +11,54 @@ class AboutPage extends StatefulWidget {
   _AboutPageState createState() => new _AboutPageState();
 }
 
+class CoOrganizerCard extends StatelessWidget {
+  final String link;
+  final String imageName;
+
+  CoOrganizerCard({Key key, this.link, this.imageName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () async => await launch(this.link),
+      child: Container(
+        width: 180.0,
+        height: 108.0,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.contain, image: AssetImage(this.imageName))),
+        ),
+      ),
+    );
+  }
+}
+
+class SNSIcon extends StatelessWidget {
+  final String link;
+  final String imageName;
+
+  SNSIcon({Key key, this.link, this.imageName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Image.asset(this.imageName),
+      ),
+      onTap: () async {
+        await launch(this.link);
+      },
+    );
+  }
+}
+
 class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     var slivers = <Widget>[];
+
     final lines = [
       Padding(
         padding: const EdgeInsets.only(
@@ -36,32 +80,17 @@ class _AboutPageState extends State<AboutPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.asset('assets/svg_twitter.png'),
-              ),
-              onTap: () async {
-                await launch('https://twitter.com/theiPlayground');
-              },
+            SNSIcon(
+              imageName: 'assets/svg_twitter.png',
+              link: 'https://twitter.com/theiPlayground',
             ),
-            GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.asset('assets/svg_facebook.png'),
-              ),
-              onTap: () async {
-                await launch('https://www.facebook.com/theiPlayground/');
-              },
+            SNSIcon(
+              imageName: 'assets/svg_facebook.png',
+              link: 'https://www.facebook.com/theiPlayground/',
             ),
-            GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.asset('assets/svg_share.png'),
-              ),
-              onTap: () async {
-                await launch('https://mastodon.technology/@iplayground');
-              },
+            SNSIcon(
+              imageName: 'assets/svg_share.png',
+              link: 'https://mastodon.technology/@iplayground',
             ),
           ],
         ),
@@ -100,6 +129,49 @@ class _AboutPageState extends State<AboutPage> {
     );
     slivers.add(text);
 
+    final coOrganizersTitle = SliverList(
+      delegate: SliverChildListDelegate([
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 20.0, left: 10.0, right: 10.0, bottom: 10.0),
+            child: Center(
+              child: Text(
+                'Co-organizers',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26.0),
+              ),
+            ),
+          ),
+        ])
+      ]),
+    );
+    slivers.add(coOrganizersTitle);
+
+    final coOrganizersGrid = SliverGrid(
+      delegate: SliverChildListDelegate([
+        CoOrganizerCard(
+          link: 'https://www.facebook.com/groups/cocoaheads.taipei/',
+          imageName: 'assets/logo_cocoaheads.png',
+        ),
+        CoOrganizerCard(
+          link: 'https://www.facebook.com/groups/ios.taipei/',
+          imageName: 'assets/logo_ios_taipei.png',
+        ),
+        CoOrganizerCard(
+          link: 'https://www.meetup.com/Swift-Taipei-User-Group/',
+          imageName: 'assets/logo_swift_taipei.png',
+        ),
+        CoOrganizerCard(
+          link: 'https://www.facebook.com/groups/1260405513988915/',
+          imageName: 'assets/logo_app_girls.png',
+        ),
+      ]),
+      gridDelegate:
+          SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 200.0),
+    );
+    slivers.add(coOrganizersGrid);
+
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -108,7 +180,7 @@ class _AboutPageState extends State<AboutPage> {
               expandedHeight: 240.0,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
-                  "assets/banner.png",
+                  'assets/banner.png',
                   fit: BoxFit.cover,
                 ),
               ),
