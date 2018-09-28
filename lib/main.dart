@@ -11,6 +11,7 @@ import 'package:iplayground/schedule_page.dart';
 
 void main() => runApp(new MyApp());
 
+/// The main app.
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// The home page.
 class PlaygroundHomePage extends StatefulWidget {
   PlaygroundHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -40,9 +42,17 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
   int _selectedIndex = 0;
 
   void _loadSession() async {
-    ScheduleLoader.shared.didUpdate.listen((parser) {
+    ScheduleLoader.shared.onUpdate.listen((parser) {
       this.setState(() => this._viewState = _ViewState.loaded);
     });
+
+    ScheduleLoader.shared.onError.listen((error) {
+      if (this._viewState == _ViewState.loaded) {
+        return;
+      }
+      this.setState(() => this._viewState = _ViewState.error);
+    });
+    this.setState(() => this._viewState = _ViewState.loading);
     ScheduleLoader.shared.load();
   }
 
@@ -115,7 +125,10 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
         return MainLoading();
       case _ViewState.error:
         return MainError(
-          onTap: () async => await ScheduleLoader.shared.load(),
+          onTap: () async {
+            this.setState(() => this._viewState = _ViewState.loading);
+            await ScheduleLoader.shared.load();
+          },
         );
       default:
         break;

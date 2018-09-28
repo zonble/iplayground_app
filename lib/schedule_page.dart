@@ -4,7 +4,7 @@ import 'package:iplayground/schedule_item_page.dart';
 import 'package:iplayground/schedule_loader.dart';
 
 class ScheduleCell extends StatelessWidget {
-  final ScheduleItem data;
+  final Session data;
   final int flex;
 
   ScheduleCell({Key key, this.data, this.flex = 2}) : super(key: key);
@@ -30,14 +30,14 @@ class ScheduleCell extends StatelessWidget {
     );
 
     var child;
-    if (data.proposalID != '') {
+    if (data.proposalId != '') {
       child = InkWell(
-        key: Key(data.proposalID),
+        key: Key(data.proposalId),
         child: column,
         onTap: () {
           final route = CupertinoPageRoute(builder: (context) {
-            ScheduleItemPage page = ScheduleItemPage(
-              data: data,
+            SessionPage page = SessionPage(
+              session: data,
             );
             return page;
           });

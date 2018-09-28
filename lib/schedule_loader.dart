@@ -3,25 +3,46 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 
-class ScheduleItem {
+/// Represents a session.
+class Session {
+  /// In day 1 or day 2.
   int day;
+
+  /// When does the session start.
   String startTime;
+
+  /// When does the session ID.
   String endTime;
-  String proposalID;
-  int sessionID;
+
+  /// The ID of the proposal matching to the session.
+  String proposalId;
+
+  /// The ID of the session.
+  int id;
+
+  /// Title of the session.
   String title;
+
+  /// Presenter of the session.
   String presenter;
+
+  /// Which room where the session takes place.
   String roomName;
+
+  /// Track A or B.
   String trackName;
+
+  /// Description of the session.
   String description;
 
-  ScheduleItem.fromMap(Map<String, dynamic> map) {
+  /// Creates a new [Session] by passing [map].
+  Session.fromMap(Map<String, dynamic> map) {
     this
       ..day = map['conference_day'] ?? 0
       ..startTime = map['start_time'] ?? ''
       ..endTime = map['end_time'] ?? ''
-      ..sessionID = map['session_id'] ?? 0
-      ..proposalID = map['proposal_id'] ?? ''
+      ..id = map['session_id'] ?? 0
+      ..proposalId = map['proposal_id'] ?? ''
       ..title = map['title']
       ..presenter = map['presenter']
       ..roomName = map['room_name']
@@ -30,35 +51,58 @@ class ScheduleItem {
   }
 }
 
+/// A container class which contains the sessions that take place in the same time.
 class ScheduleContainer {
+  /// The start time.
   String startTime;
+
+  /// The end time.
   String endTime;
-  ScheduleItem a;
-  ScheduleItem b;
-  ScheduleItem all;
+
+  /// The session in track A.
+  Session a;
+
+  /// The session in track B.
+  Session b;
+
+  /// The session for all audience.
+  Session all;
 }
 
 const String _jsonUrl =
     'https://raw.githubusercontent.com/zonble/iplayground_app/master/data/sessions.json';
 
+/// Loads the schedule.
 class ScheduleLoader {
+  /// The singleton instance.
   static ScheduleLoader shared = ScheduleLoader();
+
+  /// The sessions in day 1.
   List<ScheduleContainer> day1;
+
+  /// The sessions in day 2.
   List<ScheduleContainer> day2;
   StreamController _controller = StreamController.broadcast();
+  StreamController _errorController = StreamController.broadcast();
 
-  Stream get didUpdate => _controller.stream;
+  Stream get onUpdate => _controller.stream;
+
+  Stream get onError => _errorController.stream;
 
   load() async {
-    final response = await get(_jsonUrl);
-    if (response.statusCode != 200) {
-      throw Exception('Failed to load');
+    try {
+      final response = await get(_jsonUrl);
+      if (response.statusCode != 200) {
+        throw Exception('Failed to load');
+      }
+      Map schedule = json.decode(response.body);
+      final days = ScheduleLoader._parse(schedule);
+      this.day1 = days[0];
+      this.day2 = days[1];
+      _controller.add(this);
+    } catch (error) {
+      _errorController.add(error);
     }
-    Map schedule = json.decode(response.body);
-    final days = ScheduleLoader._parse(schedule);
-    this.day1 = days[0];
-    this.day2 = days[1];
-    _controller.add(this);
   }
 
   static List<List<ScheduleContainer>> _parse(Map<String, dynamic> map) {
@@ -66,12 +110,12 @@ class ScheduleLoader {
     if (sessions is List == false) {
       throw Exception('Unable to find sessions');
     }
-    List<ScheduleItem> allItems =
-        sessions.map((map) => ScheduleItem.fromMap(map)).toList();
+    List<Session> allItems =
+        sessions.map((map) => Session.fromMap(map)).toList();
 
-    group(List<ScheduleItem> items) {
+    group(List<Session> items) {
       List<ScheduleContainer> containerList = [];
-      for (final ScheduleItem item in items) {
+      for (final Session item in items) {
         String startTime = item.startTime;
         var containers =
             containerList.where((item) => item.startTime == startTime).toList();
@@ -101,9 +145,9 @@ class ScheduleLoader {
       return containerList;
     }
 
-    List<ScheduleItem> allItemsInDay1 =
+    List<Session> allItemsInDay1 =
         allItems.where((item) => item.day == 1).toList();
-    List<ScheduleItem> allItemsInDay2 =
+    List<Session> allItemsInDay2 =
         allItems.where((item) => item.day == 2).toList();
 
     List<ScheduleContainer> day1 = group(allItemsInDay1);

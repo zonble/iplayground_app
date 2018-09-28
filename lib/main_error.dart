@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+/// Presents an error state.
 class MainError extends StatelessWidget {
-  VoidCallback onTap;
+  final VoidCallback onTap;
 
   MainError({Key key, this.onTap}) : super(key: key);
 

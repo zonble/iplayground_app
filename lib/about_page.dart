@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// The page in the 'about' tab.
 class AboutPage extends StatefulWidget {
   AboutPage({Key key, this.title}) : super(key: key);
   final String title;
