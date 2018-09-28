@@ -55,7 +55,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
   TabController tabController;
 
   Widget buildPerfect(BuildContext context) {
-    var bottom = CupertinoTabBar(
+    var bottom = BottomNavigationBar(
       items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.schedule), title: Text('Day 1')),
@@ -74,20 +74,30 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
     final stack = Stack(
       children: <Widget>[
         Offstage(
+          key: GlobalKey(),
           offstage: this._selectedIndex != 0,
           child: SchedulePage(
+            key: Key('day1'),
             title: 'Day 1',
             schedule: ScheduleLoader.shared.day1,
           ),
         ),
         Offstage(
+          key: GlobalKey(),
           offstage: this._selectedIndex != 1,
           child: SchedulePage(
+            key: Key('day2'),
             title: 'Day 2',
             schedule: ScheduleLoader.shared.day2,
           ),
         ),
-        Offstage(offstage: this._selectedIndex != 2, child: AboutPage())
+        Offstage(
+          key: GlobalKey(),
+          offstage: this._selectedIndex != 2,
+          child: AboutPage(
+            key: Key('about'),
+          ),
+        )
       ],
     );
 
@@ -104,7 +114,9 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
       case _ViewState.loading:
         return MainLoading();
       case _ViewState.error:
-        return MainError(onTap: () async => await ScheduleLoader.shared.load(),);
+        return MainError(
+          onTap: () async => await ScheduleLoader.shared.load(),
+        );
       default:
         break;
     }

@@ -38,7 +38,7 @@ class ScheduleContainer {
   ScheduleItem all;
 }
 
-const String jsonUrl =
+const String _jsonUrl =
     'https://raw.githubusercontent.com/zonble/iplayground_app/master/data/sessions.json';
 
 class ScheduleLoader {
@@ -50,18 +50,18 @@ class ScheduleLoader {
   Stream get didUpdate => _controller.stream;
 
   load() async {
-    final response = await get(jsonUrl);
+    final response = await get(_jsonUrl);
     if (response.statusCode != 200) {
       throw Exception('Failed to load');
     }
     Map schedule = json.decode(response.body);
-    final days = ScheduleLoader.parse(schedule);
+    final days = ScheduleLoader._parse(schedule);
     this.day1 = days[0];
     this.day2 = days[1];
     _controller.add(this);
   }
 
-  static List<List<ScheduleContainer>> parse(Map<String, dynamic> map) {
+  static List<List<ScheduleContainer>> _parse(Map<String, dynamic> map) {
     final List sessions = map['sessions'];
     if (sessions is List == false) {
       throw Exception('Unable to find sessions');

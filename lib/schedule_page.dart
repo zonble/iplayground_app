@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iplayground/schedule_item_page.dart';
 import 'package:iplayground/schedule_loader.dart';
 
 class ScheduleCell extends StatelessWidget {
@@ -10,26 +11,44 @@ class ScheduleCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: this.flex,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              data.title,
-              style: TextStyle(fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
+    final column = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            data.title,
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(data.presenter, textAlign: TextAlign.center),
-          )
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(data.presenter, textAlign: TextAlign.center),
+        )
+      ],
     );
+
+    var child;
+    if (data.proposalID != '') {
+      child = InkWell(
+        key: Key(data.proposalID),
+        child: column,
+        onTap: () {
+          final route = CupertinoPageRoute(builder: (context) {
+            ScheduleItemPage page = ScheduleItemPage(
+              data: data,
+            );
+            return page;
+          });
+          Navigator.of(context).push(route);
+        },
+      );
+    } else {
+      child = column;
+    }
+
+    return Expanded(flex: this.flex, child: child);
   }
 }
 
@@ -76,7 +95,7 @@ class ScheduleRow extends StatelessWidget {
     if (hasDivider) {
       children.add(Divider(
         height: 10.0,
-        color: Colors.black,
+        color: Colors.grey,
       ));
     }
     children.add(Row(
@@ -85,11 +104,8 @@ class ScheduleRow extends StatelessWidget {
     ));
 
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: children,
-        ),
+      child: Column(
+        children: children,
       ),
     );
   }
@@ -106,6 +122,7 @@ class SchedulePage extends StatelessWidget {
     var slivers = <Widget>[];
 
     slivers.add(CupertinoSliverNavigationBar(
+      heroTag: this.title,
       largeTitle: Text(this.title),
     ));
 
