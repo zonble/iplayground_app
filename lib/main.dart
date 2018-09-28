@@ -90,7 +90,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
           offstage: this._selectedIndex != 0,
           child: SchedulePage(
             key: Key('day1'),
-            title: 'Day 1',
+            title: '10/20 星期六',
             schedule: ScheduleLoader.shared.day1,
             setOffsetMethod: (offset) => _day1Offset = offset,
             getOffsetMethod: () => _day1Offset,
@@ -101,7 +101,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
           offstage: this._selectedIndex != 1,
           child: SchedulePage(
             key: Key('day2'),
-            title: 'Day 2',
+            title: '10/21 星期日',
             schedule: ScheduleLoader.shared.day2,
             setOffsetMethod: (offset) => _day2Offset = offset,
             getOffsetMethod: () => _day2Offset,
