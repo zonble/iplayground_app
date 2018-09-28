@@ -23,7 +23,7 @@ class _AboutPageState extends State<AboutPage> {
           child: Text(
             '10/20 - 10/21 @ 台大管理學院',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20.0),
           ),
         ),
       ),
@@ -73,7 +73,7 @@ class _AboutPageState extends State<AboutPage> {
           child: Text(
             '活動緣起',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20.0),
           ),
         ),
       ),

@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'iPlayground',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Color.fromRGBO(80, 121, 255, 1.0)
       ),
       home: new PlaygroundHomePage(title: 'iPlayground'),
     );
@@ -40,6 +41,8 @@ enum _ViewState { initial, loading, error, loaded }
 class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
   _ViewState _viewState = _ViewState.initial;
   int _selectedIndex = 0;
+  double _day1Offset = 0.0;
+  double _day2Offset = 0.0;
 
   void _loadSession() async {
     ScheduleLoader.shared.onUpdate.listen((parser) {
@@ -90,6 +93,8 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
             key: Key('day1'),
             title: 'Day 1',
             schedule: ScheduleLoader.shared.day1,
+            setOffsetMethod: (offset) => _day1Offset = offset,
+            getOffsetMethod: () => _day1Offset,
           ),
         ),
         Offstage(
@@ -99,6 +104,8 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
             key: Key('day2'),
             title: 'Day 2',
             schedule: ScheduleLoader.shared.day2,
+            setOffsetMethod: (offset) => _day2Offset = offset,
+            getOffsetMethod: () => _day2Offset,
           ),
         ),
         Offstage(

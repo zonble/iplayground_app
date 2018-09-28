@@ -22,7 +22,10 @@ class SessionPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             this.session.title,
-            style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         Padding(
@@ -30,6 +33,7 @@ class SessionPage extends StatelessWidget {
               top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
           child: Text(this.session.presenter),
         ),
+        Divider(color: Colors.black,),
         Padding(
           padding: const EdgeInsets.only(
               top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
@@ -39,9 +43,8 @@ class SessionPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(
               top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
-          child: Text(this.session.roomName),
+          child: Text('(${this.session.trackName}) - ${this.session.roomName}'),
         ),
-        Divider(),
         Padding(
             padding: const EdgeInsets.only(
                 left: 8.0, right: 8.0, top: 18.0, bottom: 20.0),
