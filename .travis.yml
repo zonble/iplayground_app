@@ -43,6 +43,8 @@ matrix:
         - export PATH=$GRADLE_HOME/bin:$PATH
         - git clone https://github.com/flutter/flutter.git -b master --depth 1
       script:
+        - ./flutter/bin/flutter upgrade
+        - ./flutter/bin/flutter doctor -v
         - ./flutter/bin/flutter packages get
         - ./flutter/bin/flutter -v build apk
 
@@ -57,6 +59,8 @@ matrix:
         - brew install ios-deploy
         - git clone https://github.com/flutter/flutter.git -b master --depth 1
       script:
+        - ./flutter/bin/flutter upgrade
+        - ./flutter/bin/flutter doctor -v
         - ./flutter/bin/flutter packages get
         - ./flutter/bin/flutter -v build ios --no-codesign
 
