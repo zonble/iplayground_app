@@ -19,47 +19,53 @@ class SessionPage extends StatelessWidget {
     final listView = SliverList(
       delegate: SliverChildListDelegate([
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: Text(
             this.session.title,
             style: TextStyle(
-              fontSize: 28.0,
+              fontSize: 30.0,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(
-              top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
-          child: Text(this.session.presenter),
+              top: 4.0, bottom: 20.0, left: 10.0, right: 10.0),
+          child: Text(this.session.presenter, style: TextStyle(fontSize: 20.0),),
         ),
-        Divider(color: Colors.black,),
         Padding(
           padding: const EdgeInsets.only(
-              top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
+              top: 4.0, bottom: 4.0, left: 10.0, right: 10.0),
           child: Text(
               '第 ${this.session.day} 天  ${this.session.startTime} - ${this.session.endTime}'),
         ),
         Padding(
           padding: const EdgeInsets.only(
-              top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
+              top: 4.0, bottom: 4.0, left: 10.0, right: 10.0),
           child: Text('(${this.session.trackName}) - ${this.session.roomName}'),
         ),
+        Divider(color: Colors.black,),
         Padding(
             padding: const EdgeInsets.only(
-                left: 8.0, right: 8.0, top: 18.0, bottom: 20.0),
+                left: 10.0, right: 10.0, top: 10.0, bottom: 20.0),
             child: MarkdownBody(data: text))
       ]),
     );
 
     return Scaffold(
-      appBar: CupertinoNavigationBar(),
+      appBar: CupertinoNavigationBar(border: null, backgroundColor: Colors.white, previousPageTitle: 'iPlaground',),
       body: Scrollbar(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 640.0),
-            child: CustomScrollView(
-              slivers: <Widget>[listView],
+        child: Container(
+          color: Colors.white,
+          child: Center(
+            child: Container(
+              color: Colors.white,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 640.0),
+                child: CustomScrollView(
+                  slivers: <Widget>[listView],
+                ),
+              ),
             ),
           ),
         ),

@@ -8,9 +8,13 @@ class MainLoading extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('載入中'),
-            CupertinoActivityIndicator(),
+            Text('載入中…'),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: CupertinoActivityIndicator(),
+            ),
           ],
         ),
       ),

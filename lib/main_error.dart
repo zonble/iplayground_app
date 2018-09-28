@@ -12,6 +12,7 @@ class MainError extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -20,7 +21,13 @@ class MainError extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
-                child: Text('重試'),
+                child: Text(
+                  '重試',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
                 onPressed: onTap,
               ),
             )

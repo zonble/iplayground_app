@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:iplayground/about_page.dart';
 import 'package:iplayground/main_error.dart';
 import 'package:iplayground/main_loading.dart';
@@ -19,9 +18,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'iPlayground',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color.fromRGBO(80, 121, 255, 1.0)
-      ),
+          primarySwatch: Colors.blue,
+          primaryColor: Color.fromRGBO(80, 121, 255, 1.0),
+          textTheme: TextTheme(body1: TextStyle(fontSize: 17.0))),
       home: new PlaygroundHomePage(title: 'iPlayground'),
     );
   }

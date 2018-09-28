@@ -19,7 +19,7 @@ class ScheduleCell extends StatelessWidget {
       child: Text(
         data.title,
         style: TextStyle(
-            fontSize: 16.0,
+            fontSize: 20.0,
             color: hasLink ? Theme.of(context).primaryColor : Colors.black),
         textAlign: TextAlign.center,
       ),
