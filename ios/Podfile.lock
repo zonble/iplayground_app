@@ -1,11 +1,24 @@
 PODS:
+  - AppCenter (1.2.0):
+    - AppCenter/Analytics (= 1.2.0)
+    - AppCenter/Crashes (= 1.2.0)
+  - AppCenter/Analytics (1.2.0):
+    - AppCenter/Core
+  - AppCenter/Core (1.2.0)
+  - AppCenter/Crashes (1.2.0):
+    - AppCenter/Core
   - Flutter (1.0.0)
   - url_launcher (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - AppCenter
   - Flutter (from `.symlinks/flutter/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AppCenter
 
 EXTERNAL SOURCES:
   Flutter:
@@ -14,9 +27,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
+  AppCenter: d0b68b2a7a87ac0aed78e66f36d87fd321d0a29c
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
   url_launcher: 92b89c1029a0373879933c21642958c874539095
 
-PODFILE CHECKSUM: 7765ea4305eaab0b3dfd384c7de11902aa3195fd
+PODFILE CHECKSUM: 040755fbc0a94aeec6f21418da7c413283e4d654
 
 COCOAPODS: 1.5.3
