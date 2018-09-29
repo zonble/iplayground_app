@@ -10,7 +10,9 @@ class MainLoading extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('載入中…'),
+            Text('載入中…',
+              locale: Locale('zh', 'TW'),
+            ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: CupertinoActivityIndicator(),

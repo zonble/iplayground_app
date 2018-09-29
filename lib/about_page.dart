@@ -25,6 +25,7 @@ class AboutTitle extends StatelessWidget {
       child: Center(
         child: Text(
           this.text,
+          locale: Locale('zh', 'TW'),
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 24.0),
         ),
@@ -42,7 +43,10 @@ class AboutLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Text(this.text),
+      child: Text(
+        this.text,
+        locale: Locale('zh', 'TW'),
+      ),
     );
   }
 }
@@ -143,6 +147,7 @@ class _AboutPageState extends State<AboutPage> {
           return [
             SliverAppBar(
               expandedHeight: 240.0,
+              floating: true,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
                   'assets/banner.png',

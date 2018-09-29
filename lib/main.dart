@@ -13,12 +13,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+//    final theme = TextTheme(body1: TextStyle(fontSize: 17.0, fontFamily: 'Heiti TC'));
+    final theme =
+        TextTheme(body1: TextStyle(fontSize: 17.0, fontFamily: 'PingFang TC'));
     return new MaterialApp(
       title: 'iPlayground',
       theme: new ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: Color.fromRGBO(80, 121, 255, 1.0),
-          textTheme: TextTheme(body1: TextStyle(fontSize: 17.0))),
+          textTheme: theme),
       home: new PlaygroundHomePage(title: 'iPlayground'),
     );
   }
@@ -88,7 +91,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
           offstage: this._selectedIndex != 0,
           child: SchedulePage(
             key: Key('day1'),
-            title: '10/20 星期六',
+            title: '10/20',
             schedule: ScheduleLoader.shared.day1,
             setOffsetMethod: (offset) => _day1Offset = offset,
             getOffsetMethod: () => _day1Offset,
@@ -99,7 +102,7 @@ class _PlaygroundHomePageState extends State<PlaygroundHomePage> {
           offstage: this._selectedIndex != 1,
           child: SchedulePage(
             key: Key('day2'),
-            title: '10/21 星期日',
+            title: '10/21',
             schedule: ScheduleLoader.shared.day2,
             setOffsetMethod: (offset) => _day2Offset = offset,
             getOffsetMethod: () => _day2Offset,

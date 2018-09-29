@@ -26,6 +26,7 @@ class SessionPage extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             child: Text(
               tag,
+              locale: Locale('zh', 'TW'),
               style: TextStyle(color: Colors.white, fontSize: 15.0),
             ),
           ),
@@ -38,6 +39,7 @@ class SessionPage extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Text(
           this.session.title,
+          locale: Locale('zh', 'TW'),
           style: TextStyle(
             fontSize: 30.0,
             fontWeight: FontWeight.bold,
@@ -49,6 +51,7 @@ class SessionPage extends StatelessWidget {
             top: 4.0, bottom: 20.0, left: 10.0, right: 10.0),
         child: Text(
           this.session.presenter,
+          locale: Locale('zh', 'TW'),
           style: TextStyle(fontSize: 20.0),
         ),
       ),
@@ -56,12 +59,17 @@ class SessionPage extends StatelessWidget {
         padding: const EdgeInsets.only(
             top: 4.0, bottom: 4.0, left: 10.0, right: 10.0),
         child: Text(
-            '第 ${this.session.day} 天  ${this.session.startTime} - ${this.session.endTime}'),
+          '第 ${this.session.day} 天  ${this.session.startTime} - ${this.session.endTime}',
+          locale: Locale('zh', 'TW'),
+        ),
       ),
       Padding(
         padding: const EdgeInsets.only(
             top: 4.0, bottom: 4.0, left: 10.0, right: 10.0),
-        child: Text('(${this.session.trackName}) - ${this.session.roomName}'),
+        child: Text(
+          '(${this.session.trackName}) - ${this.session.roomName}',
+          locale: Locale('zh', 'TW'),
+        ),
       ),
       Padding(
         padding: const EdgeInsets.all(10.0),
@@ -95,7 +103,10 @@ class SessionPage extends StatelessWidget {
     for (final speaker in this.program.speakers) {
       widgets.add(Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Text(speaker.name),
+        child: Text(
+          speaker.name,
+          locale: Locale('zh', 'TW'),
+        ),
       ));
 
       var bio = speaker.biography;

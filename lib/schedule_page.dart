@@ -18,6 +18,7 @@ class ScheduleCell extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         data.title,
+        locale: Locale('zh', 'TW'),
         style: TextStyle(
             fontSize: 20.0,
             color: hasLink ? Theme.of(context).primaryColor : Colors.black),
@@ -29,7 +30,9 @@ class ScheduleCell extends StatelessWidget {
     if (data.presenter.length > 0) {
       final presenter = Padding(
         padding: const EdgeInsets.only(top: 2.0, bottom: 10.0),
-        child: Text(data.presenter, textAlign: TextAlign.center),
+        child: Text(data.presenter,
+            locale: Locale('zh', 'TW'),
+            textAlign: TextAlign.center),
       );
       children.add(presenter);
     }
@@ -170,7 +173,10 @@ class SchedulePageState extends State<SchedulePage> {
 
     slivers.add(CupertinoSliverNavigationBar(
       heroTag: this.widget.title,
-      largeTitle: Text(this.widget.title),
+      largeTitle: Text(this.widget.title,
+        style: TextStyle(fontWeight: FontWeight.w700, fontFamily: 'Helvatica'),
+        locale: Locale('zh', 'TW'),
+      ),
     ));
 
     final list = SliverList(

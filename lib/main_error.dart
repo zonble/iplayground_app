@@ -16,13 +16,17 @@ class MainError extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('載入失敗'),
+              child: Text(
+                '載入失敗',
+                locale: Locale('zh', 'TW'),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
                 child: Text(
                   '重試',
+                  locale: Locale('zh', 'TW'),
                   style: TextStyle(
                     fontSize: 17.0,
                     color: Theme.of(context).primaryColor,

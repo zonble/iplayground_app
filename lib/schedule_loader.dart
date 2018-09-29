@@ -223,7 +223,6 @@ class ScheduleLoader {
     for (Program program in converted) {
       result["prop_${program.id}"] = program;
     }
-    print(result);
     return result;
   }
 }
