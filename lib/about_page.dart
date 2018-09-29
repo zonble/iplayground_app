@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:iplayground/about_coorganizer_card.dart';
 import 'package:iplayground/about_sns_icon.dart';
+import 'package:iplayground/about_staff_card.dart';
 
 /// The page in the 'about' tab.
 class AboutPage extends StatefulWidget {
@@ -107,6 +108,83 @@ class _AboutPageState extends State<AboutPage> {
       ]),
     );
     slivers.add(text);
+
+    final staffTitle = SliverList(
+      delegate: SliverChildListDelegate([
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [AboutTitle(text: 'Staff')])
+      ]),
+    );
+    slivers.add(staffTitle);
+
+    final staffGrid = SliverGrid(
+      delegate: SliverChildListDelegate([
+        StaffCard(
+          imageName: 'assets/staff_hokila.jpg',
+          name: 'Hokila',
+          title: 'iOS Evangelist / Trello Lover/ Father',
+          link: 'https://www.facebook.com/hokilaj',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_hanyu.png',
+          name: 'Hanyu Chen',
+          title: 'iOS Developer',
+          link: 'https://www.facebook.com/hanyu.chen.518',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_johnlin.jpeg',
+          name: 'John Lin',
+          title: 'Swift Taipei Organizer',
+          link: 'https://twitter.com/johnlinvc',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_13.jpeg',
+          name: 'ethanhuang13',
+          title: 'iOS Dev @ CATCHPLAY',
+          link: 'https://twitter.com/ethanhuang13',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_haolee.jpeg',
+          name: 'Hao Lee',
+          title: 'Software Engineer at DYLAN-TEK CO., LTD.',
+          link: 'https://twitter.com/twhaolee',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_welly.png',
+          name: 'Welly',
+          title: 'F2E at KKStream',
+          link: 'https://github.com/WellyShen',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_joechen.jpg',
+          name: 'Joe Chen',
+          title: 'Software Engineer',
+          link: '',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_hanpo.jpg',
+          name: 'Hanpo',
+          title: 'UI Design Engineer at KeyXentic',
+          link: 'https://www.facebook.com/hanpo.tw',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_superbil.jpeg',
+          name: 'Superbil',
+          title: 'Software Freelance',
+          link: 'https://twitter.com/superbil',
+        ),
+        StaffCard(
+          imageName: 'assets/staff_dada.jpg',
+          name: 'Dada',
+          title: 'iOS Developer at KKBOX',
+          link: 'https://twitter.com/nalydadad',
+        ),
+      ]),
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200.0, childAspectRatio: 0.7),
+    );
+    slivers.add(staffGrid);
 
     final coOrganizersTitle = SliverList(
       delegate: SliverChildListDelegate([

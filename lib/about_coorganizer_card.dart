@@ -9,15 +9,21 @@ class CoOrganizerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async => await launch(this.link),
-      child: Container(
-        width: 180.0,
-        height: 108.0,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.contain, image: AssetImage(this.imageName))),
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onTap: () async => await launch(this.link),
+        child: Container(
+          width: 180.0,
+          height: 108.0,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.contain, image: AssetImage(this.imageName))),
+            ),
+          ),
         ),
       ),
     );

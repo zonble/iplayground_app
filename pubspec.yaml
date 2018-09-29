@@ -49,6 +49,16 @@ flutter:
     - assets/logo_cocoaheads.png
     - assets/logo_ios_taipei.png
     - assets/logo_swift_taipei.png
+    - assets/staff_13.jpeg
+    - assets/staff_dada.jpg
+    - assets/staff_hanpo.jpg
+    - assets/staff_hanyu.png
+    - assets/staff_haolee.jpeg
+    - assets/staff_hokila.jpg
+    - assets/staff_joechen.jpg
+    - assets/staff_johnlin.jpeg
+    - assets/staff_superbil.jpeg
+    - assets/staff_welly.png
 
   # - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
