@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:iplayground/about_coorganizer_card.dart';
 import 'package:iplayground/about_sns_icon.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 /// The page in the 'about' tab.
 class AboutPage extends StatefulWidget {

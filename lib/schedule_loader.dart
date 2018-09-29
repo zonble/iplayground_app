@@ -69,8 +69,47 @@ class ScheduleContainer {
   Session all;
 }
 
-const String _jsonUrl =
+class Speaker {
+  String name;
+  String biography;
+
+  Speaker.fromMap(Map<String, dynamic> map) {
+    this
+      ..name = map['name'] ?? ''
+      ..biography = map['bio'];
+  }
+}
+
+class Program {
+  String title;
+  String abstract;
+  List reviewTags;
+  int id;
+  String track;
+  String videoUrl;
+  String slideUrl;
+  Map<dynamic, dynamic> customFields;
+  List<Speaker> speakers;
+
+  Program.fromMap(Map<String, dynamic> map) {
+    this
+      ..title = map['title'] ?? ''
+      ..abstract = map['abstract'] ?? ''
+      ..reviewTags = map['review_tags'] ?? []
+      ..id = map['id']
+      ..track = map['track'] ?? ''
+      ..videoUrl = map['video_url'] ?? ''
+      ..slideUrl = map['slides_url'] ?? ''
+      ..customFields = map['custom_fields'] ?? {};
+    final List speakerList = map['speakers'];
+    this.speakers = speakerList.map((map) => Speaker.fromMap(map)).toList();
+  }
+}
+
+const String _sessionJsonUrl =
     'https://raw.githubusercontent.com/zonble/iplayground_app/master/data/sessions.json';
+const String _programJsonUrl =
+    'https://raw.githubusercontent.com/zonble/iplayground_app/master/data/program.json';
 
 /// Loads the schedule.
 class ScheduleLoader {
@@ -82,30 +121,51 @@ class ScheduleLoader {
 
   /// The sessions in day 2.
   List<ScheduleContainer> day2;
+
+  /// The programs.
+  Map<String, Program> programs;
+
   StreamController _controller = StreamController.broadcast();
   StreamController _errorController = StreamController.broadcast();
 
+  /// Broadcasts that the loader is updated.
   Stream get onUpdate => _controller.stream;
 
+  /// Broadcasts that the loader encounters errors.
   Stream get onError => _errorController.stream;
 
   load() async {
     try {
-      final response = await get(_jsonUrl);
-      if (response.statusCode != 200) {
+      final sessionResponse = await get(_sessionJsonUrl);
+      if (sessionResponse.statusCode != 200) {
         throw Exception('Failed to load');
       }
-      Map schedule = json.decode(response.body);
-      final days = ScheduleLoader._parse(schedule);
+      Map scheduleMap = json.decode(sessionResponse.body);
+      final days = ScheduleLoader._parseSessions(scheduleMap);
       this.day1 = days[0];
       this.day2 = days[1];
+
+      final programResponse = await get(_programJsonUrl);
+      if (programResponse.statusCode != 200) {
+        throw Exception('Failed to load');
+      }
+      Map programMap = json.decode(programResponse.body);
+      this.programs = ScheduleLoader._parseProgram(programMap);
+
       _controller.add(this);
     } catch (error) {
+      print(error);
       _errorController.add(error);
     }
   }
 
-  static List<List<ScheduleContainer>> _parse(Map<String, dynamic> map) {
+  Program getProgramById(String proposalId) {
+    Program program = this.programs[proposalId];
+    return program;
+  }
+
+  static List<List<ScheduleContainer>> _parseSessions(
+      Map<String, dynamic> map) {
     final List sessions = map['sessions'];
     if (sessions is List == false) {
       throw Exception('Unable to find sessions');
@@ -153,5 +213,17 @@ class ScheduleLoader {
     List<ScheduleContainer> day1 = group(allItemsInDay1);
     List<ScheduleContainer> day2 = group(allItemsInDay2);
     return [day1, day2];
+  }
+
+  static Map<String, Program> _parseProgram(Map<String, dynamic> map) {
+    final List programList = map['program'];
+    final List converted =
+        programList.map((map) => Program.fromMap(map)).toList();
+    Map<String, Program> result = {};
+    for (Program program in converted) {
+      result["prop_${program.id}"] = program;
+    }
+    print(result);
+    return result;
   }
 }

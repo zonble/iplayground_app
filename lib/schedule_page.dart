@@ -47,9 +47,11 @@ class ScheduleCell extends StatelessWidget {
           key: Key(data.proposalId),
           child: column,
           onTap: () {
+            final program = ScheduleLoader.shared.getProgramById(this.data.proposalId);
             final route = CupertinoPageRoute(builder: (context) {
               SessionPage page = SessionPage(
                 session: data,
+                program: program,
               );
               return page;
             });
