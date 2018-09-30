@@ -41,7 +41,7 @@ matrix:
         - unzip -qq gradle-3.5-bin.zip
         - export GRADLE_HOME=$PWD/gradle-3.5
         - export PATH=$GRADLE_HOME/bin:$PATH
-        - git clone https://github.com/flutter/flutter.git -b master --depth 1
+        - git clone https://github.com/flutter/flutter.git -b beta --depth 1
       env:
         - FLUTTER_VERSION="0.8.7"
       script:
@@ -59,7 +59,7 @@ matrix:
         - brew install --HEAD libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
-        - git clone https://github.com/flutter/flutter.git -b master --depth 1
+        - git clone https://github.com/flutter/flutter.git -b beta --depth 1
       env:
         - FLUTTER_VERSION="0.8.7"
       script:
