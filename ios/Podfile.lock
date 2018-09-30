@@ -13,7 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - AppCenter
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
@@ -22,7 +22,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
