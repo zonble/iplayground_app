@@ -42,6 +42,8 @@ matrix:
         - export GRADLE_HOME=$PWD/gradle-3.5
         - export PATH=$GRADLE_HOME/bin:$PATH
         - git clone https://github.com/flutter/flutter.git -b master --depth 1
+      env:
+        - FLUTTER_VERSION="0.8.7"
       script:
         - ./flutter/bin/flutter upgrade
         - ./flutter/bin/flutter doctor -v
@@ -58,6 +60,8 @@ matrix:
         - brew install ideviceinstaller
         - brew install ios-deploy
         - git clone https://github.com/flutter/flutter.git -b master --depth 1
+      env:
+        - FLUTTER_VERSION="0.8.7"
       script:
         - ./flutter/bin/flutter upgrade
         - ./flutter/bin/flutter doctor -v
