@@ -45,8 +45,8 @@ matrix:
       env:
         - FLUTTER_VERSION="0.8.7"
       script:
-        - ./flutter/bin/flutter upgrade
         - ./flutter/bin/flutter doctor -v
+        - ./flutter/bin/flutter upgrade
         - ./flutter/bin/flutter packages get
         - ./flutter/bin/flutter -v build apk
 
@@ -63,6 +63,7 @@ matrix:
       env:
         - FLUTTER_VERSION="0.8.7"
       script:
+        - ./flutter/bin/flutter doctor -v
         - ./flutter/bin/flutter upgrade
         - ./flutter/bin/flutter doctor -v
         - ./flutter/bin/flutter packages get
