@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Color.fromRGBO(80, 121, 255, 1.0),
           textTheme: theme),
       home: new PlaygroundHomePage(title: 'iPlayground'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

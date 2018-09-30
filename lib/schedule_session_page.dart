@@ -17,22 +17,22 @@ class SessionPage extends StatelessWidget {
       text = html2md.convert(text);
     }
 
-    var tags = this.program.reviewTags.map((tag) {
-      return Padding(
-        padding: const EdgeInsets.only(right: 8.0),
-        child: Container(
-          color: Theme.of(context).primaryColor,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Text(
-              tag,
-              locale: Locale('zh', 'TW'),
-              style: TextStyle(color: Colors.white, fontSize: 15.0),
-            ),
-          ),
-        ),
-      );
-    }).toList();
+//    var tags = this.program.reviewTags.map((tag) {
+//      return Padding(
+//        padding: const EdgeInsets.only(right: 8.0),
+//        child: Container(
+//          color: Theme.of(context).primaryColor,
+//          child: Padding(
+//            padding: const EdgeInsets.all(4.0),
+//            child: Text(
+//              tag,
+//              locale: Locale('zh', 'TW'),
+//              style: TextStyle(color: Colors.white, fontSize: 15.0),
+//            ),
+//          ),
+//        ),
+//      );
+//    }).toList();
 
     List<Widget> widgets = [
       Padding(
@@ -71,13 +71,13 @@ class SessionPage extends StatelessWidget {
           locale: Locale('zh', 'TW'),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: tags,
-        ),
-      ),
+//      Padding(
+//        padding: const EdgeInsets.all(10.0),
+//        child: Row(
+//          mainAxisAlignment: MainAxisAlignment.end,
+//          children: tags,
+//        ),
+//      ),
       Divider(
         color: Colors.black,
       ),
