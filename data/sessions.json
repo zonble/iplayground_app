@@ -64,7 +64,7 @@
     "presenter": "Enid Tian",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "\u003cp\u003e近年隨著 Apple 推出親切友善的 Swift 語言，吸引不少程式新手或轉職者投入 iOS 開發領域，但新手如何才能達到業界標準、找到心目中理想的工作呢？本場分享將以 AppWorks School 與業界合作的經驗，分享新手該建立起哪些核心觀念、技能，才能成為廣受業界青睞的工程師。\u003c/p\u003e\r\n"
+    "desc": "近年隨著 Apple 推出親切友善的 Swift 語言，吸引不少程式新手或轉職者投入 iOS 開發領域，但新手如何才能達到業界標準、找到心目中理想的工作呢？本場分享將以 AppWorks School 與業界合作的經驗，分享新手該建立起哪些核心觀念、技能，才能成為廣受業界青睞的工程師。"
   }, {
     "conference_day": 1,
     "start_time": "14:45",
@@ -75,7 +75,7 @@
     "presenter": "Marvin Lin",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "\u003cp\u003e將 WWDC18 中，把 Core ML 設為主題的 sessions 重點濃縮成一個 talk。這些 Sessions 主要有下列幾點，輸出 ML 模組的 Create ML， Core ML 中新加入的功能 (WWDC18 這花了兩個 sessions 的時間)，自然語言的 framework，Vision framework 中的目標追綜，Core ML 中的機器視覺功能。\u003c/p\u003e\r\n"
+    "desc": "將 WWDC18 中，把 Core ML 設為主題的 sessions 重點濃縮成一個 talk。這些 Sessions 主要有下列幾點，輸出 ML 模組的 Create ML， Core ML 中新加入的功能 (WWDC18 這花了兩個 sessions 的時間)，自然語言的 framework，Vision framework 中的目標追綜，Core ML 中的機器視覺功能。"
   }, {
     "conference_day": 1,
     "start_time": "13:35",
@@ -86,7 +86,7 @@
     "presenter": "Gary niL",
     "room_name": "B101",
     "track_name": "B",
-    "desc": "\u003cp\u003eiOS 越獄（Jailbreak）是獲取 iOS 設備的 Root 權限的一個技術。\u003cbr\u003e\r\n通過一些越獄工具可以完成越獄前不可能進行的動作，例如安裝 App Store 以外未經過簽名的 Apps、修改 SpringBoard 安裝主題、運行 Tweak 或 Shell 程式。對於開發者來說，越獄後的設備就能夠 hook 進 iOS 系統中所有的 class，來更改或控制一些 iDevice 的內建功能。而越獄社群中也有類似 App Store 的生態，開發者們透過 theos 開發工具開發 tweak 並上架到 Cydia Store 中提供給使用者安裝使用，這些 Tweak 都依賴一個叫 Cydia Substrate 的動態連結函式庫，它的主要功能是提供方法 hook 某個 App，修改程式碼或替換其中的 method 實作\u003c/p\u003e\r\n\r\n\u003cp\u003e在本次的主題中，將會簡單介紹如何開發一個簡易的 iOS Tweak，並將這個 Tweak 部署到 iOS 設備上\u003cbr\u003e\r\n- 工具，環境介紹\u003cbr\u003e\r\n- Hello World 一個簡單的 Tweak\u003cbr\u003e\r\n- Tweak 部署\u003cbr\u003e\r\n- Tweak 可以做什麼？\u003c/p\u003e\r\n"
+    "desc": "iOS 越獄（Jailbreak）是獲取 iOS 設備的 Root 權限的一個技術。\n\n通過一些越獄工具可以完成越獄前不可能進行的動作，例如安裝 App Store 以外未經過簽名的 Apps、修改 SpringBoard 安裝主題、運行 Tweak 或 Shell 程式。對於開發者來說，越獄後的設備就能夠 hook 進 iOS 系統中所有的 class，來更改或控制一些 iDevice 的內建功能。而越獄社群中也有類似 App Store 的生態，開發者們透過 theos 開發工具開發 tweak 並上架到 Cydia Store 中提供給使用者安裝使用，這些 Tweak 都依賴一個叫 Cydia Substrate 的動態連結函式庫，它的主要功能是提供方法 hook 某個 App，修改程式碼或替換其中的 method 實作。\n在本次的主題中，將會簡單介紹如何開發一個簡易的 iOS Tweak，並將這個 Tweak 部署到 iOS 設備上。\n\n- 工具，環境介紹\n- Hello World 一個簡單的 Tweak\n- Tweak 部署\n- Tweak 可以做什麼？\n"
   }, {
     "conference_day": 2,
     "start_time": "10:20",
@@ -108,7 +108,7 @@
     "presenter": "AKI YU",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "\u003ch4\u003e如果你有如下的疑問，那麼可能在這個議程裡，你將可以更進一步獲得了解這些問題的本質\u003c/h4\u003e\r\n\r\n\u003cul\u003e\r\n\u003cli\u003e與PM或是非技術人員溝通需求有困難？\r\n\r\n\u003cul\u003e\r\n\u003cli\u003e什麼是行為趨動開發(BDD)、什麼是實例化需求(SBE)\u003c/li\u003e\r\n\u003c/ul\u003e\u003c/li\u003e\r\n\u003cli\u003e書上寫的單元測試，看起來都很簡單，但實務上又下不了手 \r\n\r\n\u003cul\u003e\r\n\u003cli\u003e什麼是測試趨動開發(TDD)\u003c/li\u003e\r\n\u003c/ul\u003e\u003c/li\u003e\r\n\u003cli\u003eCoverage 100% 是不是代表程式品質很好？\r\n\r\n\u003cul\u003e\r\n\u003cli\u003e談測試的品質\u003c/li\u003e\r\n\u003c/ul\u003e\u003c/li\u003e\r\n\u003cli\u003e誰來寫 UI Test ?\r\n\r\n\u003cul\u003e\r\n\u003cli\u003e工程師 --- iOS UI Testing Bundle\u003c/li\u003e\r\n\u003cli\u003eQA --- Appium、calabash\u003c/li\u003e\r\n\u003c/ul\u003e\u003c/li\u003e\r\n\u003cli\u003e有沒有不會寫程式 又不懂 XCode 的人用的UI測試程式？\r\n\r\n\u003cul\u003e\r\n\u003cli\u003e用Mac APP做一個測試機器人吧\u003c/li\u003e\r\n\u003c/ul\u003e\u003c/li\u003e\r\n\u003c/ul\u003e\r\n"
+    "desc": "如果你有如下的疑問，那麼可能在這個議程裡，你將可以更進一步獲得了解這些問題的本質\n\n-與PM或是非技術人員溝通需求有困難？\n  - 什麼是行為趨動開發(BDD)、什麼是實例化需求(SBE)\n- 書上寫的單元測試，看起來都很簡單，但實務上又下不了手\n  - 什麼是測試趨動開發(TDD)\n- Coverage 100% 是不是代表程式品質很好？\n  - 談測試的品質\n- 誰來寫 UI Test ?\n  - 工程師 --- iOS UI Testing Bundle\n  - QA --- Appium、calabash\n- 有沒有不會寫程式 又不懂 XCode 的人用的UI測試程式？\n  - 用Mac APP做一個測試機器人吧"
   }, {
     "conference_day": 1,
     "start_time": "13:00",
@@ -196,7 +196,7 @@
     "presenter": "Jersey Su",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "\u003cp\u003e現今軟體發佈週期越來越短，但軟體的品質一直是我們面臨最大的挑戰，在 iOS 上有沒有什麼方法, 能夠讓品質提升了. BDD 是一個實踐的方法, 透過實例化需求釐清問題, 且變成可執行化的文件, 本次分享實作 XCUITest 在 BDD 上面的實踐及經驗談, 希望各位聽眾們藉此能有更多的收穫。\u003c/p\u003e\r\n"
+    "desc": "現今軟體發佈週期越來越短，但軟體的品質一直是我們面臨最大的挑戰，在 iOS 上有沒有什麼方法, 能夠讓品質提升了. BDD 是一個實踐的方法, 透過實例化需求釐清問題, 且變成可執行化的文件, 本次分享實作 XCUITest 在 BDD 上面的實踐及經驗談, 希望各位聽眾們藉此能有更多的收穫。"
   }, {
     "conference_day": 2,
     "start_time": "09:00",
@@ -229,7 +229,7 @@
     "presenter": "Marcus Wu",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "\u003cp\u003e在Apple 大力推廣Swift 的時代，Swift 不只能用於iOS App 之上，更可以幫助工程師撰寫CLI 工具來加速工作流程。本議程將會分享如何透過Swift 撰寫Linux 可執行檔，並透過Homebrew 發布讓世界各地的人方便安裝使用。\u003c/p\u003e\r\n"
+    "desc": "在Apple 大力推廣Swift 的時代，Swift 不只能用於iOS App 之上，更可以幫助工程師撰寫CLI 工具來加速工作流程。本議程將會分享如何透過Swift 撰寫Linux 可執行檔，並透過Homebrew 發布讓世界各地的人方便安裝使用。"
   }, {
     "conference_day": 1,
     "start_time": "15:20",
@@ -240,7 +240,7 @@
     "presenter": "張景隆",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "* Introducing Create ML\r\n* Define your GOAL\r\n* Data pre-processing\r\n* Find the best model (Training \u0026 Evaluating)\r\n* Make it real on the iPhone"
+    "desc": "* Introducing Create ML\r\n* Define your GOAL\n* Data pre-processing\n* Find the best model (Training \u0026 Evaluating)\n* Make it real on the iPhone"
   }, {
     "conference_day": 1,
     "start_time": "14:10",
@@ -251,7 +251,7 @@
     "presenter": "丁沛堯",
     "room_name": "B101",
     "track_name": "B",
-    "desc": "什麼是GraphQL？\r\n為什麼要用GraphQL？ ~~因為Facebook的大大們在用啊~~ \r\nRESTful不好嗎？ ~~對，RESTful不好~~。\r\n\r\n在這個talk中會跟大家介紹GraphQL、如何在iOS系統應用GraphQL，然後聊聊我在產品中實際採用GraphQL後的辛酸血淚史，以及GraphQL的優缺點。"
+    "desc": "什麼是GraphQL？\n為什麼要用GraphQL？ ~~因為Facebook的大大們在用啊~~ \nRESTful不好嗎？ ~~對，RESTful不好~~。\n\n在這個talk中會跟大家介紹GraphQL、如何在iOS系統應用GraphQL，然後聊聊我在產品中實際採用GraphQL後的辛酸血淚史，以及GraphQL的優缺點。"
   }, {
     "conference_day": 2,
     "start_time": "11:30",
@@ -295,6 +295,6 @@
     "presenter": "徐嘉駿 Toby Hsu",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "分享 Apple TV App \b的開發與使用者體驗設計的愛恨情仇。\r\n究竟，iOS 與 tvOS 差在哪裡，Mobile 跟 TV 上又有什麼不一樣呢？\r\n讓我們繼續看下去⋯⋯🤔\r\n"
+    "desc": "分享 Apple TV App 的開發與使用者體驗設計的愛恨情仇。\r\n究竟，iOS 與 tvOS 差在哪裡，Mobile 跟 TV 上又有什麼不一樣呢？\r\n讓我們繼續看下去⋯⋯🤔\r\n"
   }]
 }
