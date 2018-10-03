@@ -2,6 +2,7 @@
 
 iPlayground is the app for [iPlayground](https://iplayground.io/) conference built with [Flutter](https://flutter.io). The app supports both iOS and Android.
 
+- https://itunes.apple.com/tw/app/iplayground-18/id1367423535?mt=8)
 - [Android version](https://play.google.com/store/apps/details?id=iplayground.zonble.net.iplayground)
 
 ## Build and Run
