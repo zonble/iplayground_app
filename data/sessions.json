@@ -1,7 +1,7 @@
 {
   "sessions": [{
     "conference_day": 1,
-    "start_time": "10:00",
+    "start_time": "09:50",
     "end_time": "10:40",
     "session_id": 19,
     "proposal_id": "prop_53",
@@ -45,7 +45,7 @@
     "desc": "講解 CollectionView 的生命週期\r\n"
   }, {
     "conference_day": 2,
-    "start_time": "09:30",
+    "start_time": "09:20",
     "end_time": "10:10",
     "session_id": 38,
     "proposal_id": "prop_5",
