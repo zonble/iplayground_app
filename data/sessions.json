@@ -53,7 +53,7 @@
     "presenter": "藍永倫",
     "room_name": "正大會議廳",
     "track_name": "共同軌",
-    "desc": "利用Swift和腳踏車，自幹一套類似Zwift的遊戲。"
+    "desc": "利用 Swift 和腳踏車，自幹一套類似 Zwift 的遊戲。"
   }, {
     "conference_day": 2,
     "start_time": "10:20",
@@ -141,7 +141,7 @@
     "presenter": "鄭雅方",
     "room_name": "B101",
     "track_name": "B",
-    "desc": "\u003cp\u003e分享APP Girls創辦, 開發經驗, 職涯經驗以及自學經驗等等，歸納出任何自學的重要元素與方法，並鼓勵女生也可以寫程式，靠自己的力量做自己想要做的事情！\u003c/p\u003e\r\n"
+    "desc": "\u003cp\u003e分享 APP Girls 創辦, 開發經驗, 職涯經驗以及自學經驗等等，歸納出任何自學的重要元素與方法，並鼓勵女生也可以寫程式，靠自己的力量做自己想要做的事情！\u003c/p\u003e\r\n"
   }, {
     "conference_day": 1,
     "start_time": "13:35",
@@ -196,7 +196,7 @@
     "presenter": "Jersey Su",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "現今軟體發佈週期越來越短，但軟體的品質一直是我們面臨最大的挑戰，在 iOS 上有沒有什麼方法, 能夠讓品質提升了. BDD 是一個實踐的方法, 透過實例化需求釐清問題, 且變成可執行化的文件, 本次分享實作 XCUITest 在 BDD 上面的實踐及經驗談, 希望各位聽眾們藉此能有更多的收穫。"
+    "desc": "現今軟體發佈週期越來越短，但軟體的品質一直是我們面臨最大的挑戰，在 iOS 上有沒有什麼方法，能夠讓品質提升了。BDD 是一個實踐的方法，透過實例化需求釐清問題，且變成可執行化的文件，本次分享實作 XCUITest 在 BDD 上面的實踐及經驗談，希望各位聽眾們藉此能有更多的收穫。"
   }, {
     "conference_day": 2,
     "start_time": "09:00",
@@ -229,7 +229,7 @@
     "presenter": "Marcus Wu",
     "room_name": "正大會議廳",
     "track_name": "A",
-    "desc": "在Apple 大力推廣Swift 的時代，Swift 不只能用於iOS App 之上，更可以幫助工程師撰寫CLI 工具來加速工作流程。本議程將會分享如何透過Swift 撰寫Linux 可執行檔，並透過Homebrew 發布讓世界各地的人方便安裝使用。"
+    "desc": "在 Apple 大力推廣 Swift 的時代，Swift 不只能用於 iOS App 之上，更可以幫助工程師撰寫 CLI 工具來加速工作流程。本議程將會分享如何透過 Swift 撰寫 Linux 可執行檔，並透過 Homebrew 發布讓世界各地的人方便安裝使用。"
   }, {
     "conference_day": 1,
     "start_time": "15:20",
@@ -247,11 +247,11 @@
     "end_time": "14:40",
     "session_id": 32,
     "proposal_id": "prop_64",
-    "title": "從RESTful API到GraphQL",
+    "title": "從 RESTful API 到 GraphQL",
     "presenter": "丁沛堯",
     "room_name": "B101",
     "track_name": "B",
-    "desc": "什麼是GraphQL？\n為什麼要用GraphQL？ ~~因為Facebook的大大們在用啊~~ \nRESTful不好嗎？ ~~對，RESTful不好~~。\n\n在這個talk中會跟大家介紹GraphQL、如何在iOS系統應用GraphQL，然後聊聊我在產品中實際採用GraphQL後的辛酸血淚史，以及GraphQL的優缺點。"
+    "desc": "什麼是 GraphQL？\n為什麼要用 GraphQL？ ~~因為 Facebook 的大大們在用啊~~ \nRESTful 不好嗎？ ~~對，RESTful 不好~~。\n\n在這個 talk 中會跟大家介紹 GraphQL、如何在 iOS 系統應用 GraphQL，然後聊聊我在產品中實際採用 GraphQL 後的辛酸血淚史，以及 GraphQL 的優缺點。"
   }, {
     "conference_day": 2,
     "start_time": "11:30",
@@ -273,18 +273,18 @@
     "presenter": "Jason",
     "room_name": "B101",
     "track_name": "B",
-    "desc": "聽過Jungle Pattern嗎？覺得 WTF/min 不夠高嗎？寫code 寫的心平氣和渾身舒暢？那你一定要來聽聽Dirty Code 凋零的程式碼。"
+    "desc": "聽過 Jungle Pattern 嗎？覺得 WTF/min 不夠高嗎？寫 code 寫的心平氣和渾身舒暢？那你一定要來聽聽 Dirty Code 凋零的程式碼。"
   }, {
     "conference_day": 1,
     "start_time": "15:20",
     "end_time": "15:50",
     "session_id": 36,
     "proposal_id": "prop_72",
-    "title": "Refactor:從MVC到Redux",
+    "title": "Refactor: 從 MVC 到 Redux",
     "presenter": "Jeff Lin",
     "room_name": "B101",
     "track_name": "B",
-    "desc": "MVC是大家在App開發所熟知的Design Pattern。近年廣受Web使用的Redux架構一樣也可以應用在iOS App開發上。我們將用一個簡單的範例，把原先的MVC轉換成Redux，並探討什麼元件可以獨立起來。"
+    "desc": "MVC 是大家在 App 開發所熟知的 Design Pattern。近年廣受 Web 使用的 Redux 架構一樣也可以應用在 iOS App 開發上。我們將用一個簡單的範例，把原先的 MVC 轉換成 Redux，並探討什麼元件可以獨立起來。"
   }, {
     "conference_day": 1,
     "start_time": "13:00",
