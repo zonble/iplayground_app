@@ -24,7 +24,7 @@
   }, {
     "conference_day": 1,
     "start_time": "09:30",
-    "end_time": "10:00",
+    "end_time": "09:50",
     "session_id": 23,
     "proposal_id": "",
     "title": "開場",
@@ -200,7 +200,7 @@
   }, {
     "conference_day": 2,
     "start_time": "09:00",
-    "end_time": "09:30",
+    "end_time": "09:20",
     "session_id": 48,
     "proposal_id": "",
     "title": "開場",
