@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:iplayground/about_sponsor_card.dart';
 import 'package:iplayground/about_coorganizer_card.dart';
 import 'package:iplayground/about_sns_icon.dart';
 import 'package:iplayground/about_staff_card.dart';
@@ -109,6 +110,65 @@ class _AboutPageState extends State<AboutPage> {
     );
     slivers.add(text);
 
+    final sponsorTitle = SliverList(
+      delegate: SliverChildListDelegate([
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [AboutTitle(text: 'Sponsor')])
+      ]),
+    );
+    slivers.add(sponsorTitle);
+
+    final sponsorGrid = SliverGrid(
+      delegate: SliverChildListDelegate([
+        SponsorCard(
+          imageName: 'assets/logo_esun.jpg',
+          name: '玉山銀行',
+          title: '黃金贊助',
+          link: 'https://bit.ly/2zR7AWS',
+        ),
+        SponsorCard(
+          imageName: 'assets/logo_dcard.png',
+          name: 'Dcard',
+          title: '黃金贊助',
+          link: 'https://join.dcard.today',
+        ),
+        SponsorCard(
+          imageName: 'assets/logo_piccollage.png',
+          name: 'PicCollage',
+          title: '白銀贊助',
+          link: 'https://pic-collage.com',
+        ),
+        SponsorCard(
+          imageName: 'assets/logo_ichef.jpeg',
+          name: 'iCHEF',
+          title: '白銀贊助',
+          link: 'https://www.ichefpos.com/zh-tw/join-us/',
+        ),
+        SponsorCard(
+          imageName: 'assets/logo_catchplay.jpg',
+          name: 'CATCHPLAY',
+          title: '青銅贊助',
+          link: 'https://www.catchplay.com/',
+        ),
+        SponsorCard(
+          imageName: 'assets/logo_keyxentic.png',
+          name: 'KeyXentic',
+          title: '青銅贊助',
+          link: 'https://www.keyxentic.com',
+        ),
+        SponsorCard(
+          imageName: 'assets/logo_5xruby.png',
+          name: '五倍紅寶石',
+          title: '設備贊助',
+          link: 'https://5xruby.tw',
+        ),
+      ]),
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200.0, childAspectRatio: 0.7),
+    );
+    slivers.add(sponsorGrid);
+
     final staffTitle = SliverList(
       delegate: SliverChildListDelegate([
         Column(
@@ -123,7 +183,7 @@ class _AboutPageState extends State<AboutPage> {
         StaffCard(
           imageName: 'assets/staff_hokila.jpg',
           name: 'Hokila',
-          title: 'iOS Evangelist / Trello Lover/ Father',
+          title: 'iOS Evangelist / Trello Lover / Father',
           link: 'https://www.facebook.com/hokilaj',
         ),
         StaffCard(
