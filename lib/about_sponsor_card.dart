@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class StaffCard extends StatelessWidget {
+class SponsorCard extends StatelessWidget {
   final String imageName;
   final String name;
   final String title;
   final String link;
 
-  StaffCard({Key key, this.imageName, this.name, this.title, this.link}) : super(key: key);
+  SponsorCard({Key key, this.imageName, this.name, this.title, this.link}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,21 @@ class StaffCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              ClipOval(child: Image.asset(this.imageName)),
+              Container(
+              width: 180.0,
+              height: 108.0,
+              child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.contain, 
+                      image: AssetImage(this.imageName)
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Text(
                 this.name,
                 style: TextStyle(fontSize: 17.0),
