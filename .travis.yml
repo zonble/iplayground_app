@@ -1,74 +1,23 @@
-matrix:
-  include:
-    - os: linux
-      language: android
-      licenses:
-        - "android-sdk-preview-license-52d11cd2"
-        - "android-sdk-license-.+"
-        - "google-gdk-license-.+"
-      android:
-        components:
-          # Uncomment the lines below if you want to
-          # use the latest revision of Android SDK Tools
-          # - tools
-          # - platform-tools
-
-          # The BuildTools version used by your project
-          - build-tools-28.0.2
-          # The SDK version used to compile your project
-          - android-28
-
-          - extra-android-support
-          - extra-google-m2repository
-          - extra-android-m2repository
-
-      jdk: oraclejdk8
-      sudo: false
-      addons:
-        apt:
-          # Flutter depends on /usr/lib/x86_64-linux-gnu/libstdc++.so.6 version GLIBCXX_3.4.18
-          sources:
-            - ubuntu-toolchain-r-test # if we don't specify this, the libstdc++6 we get is the wrong version
-          packages:
-            - libstdc++6
-            - fonts-droid
-
-      before_install:
-        - yes | sdkmanager "platforms;android-27"
-
-      before_script:
-        - wget http://services.gradle.org/distributions/gradle-3.5-bin.zip
-        - unzip -qq gradle-3.5-bin.zip
-        - export GRADLE_HOME=$PWD/gradle-3.5
-        - export PATH=$GRADLE_HOME/bin:$PATH
-        - git clone https://github.com/flutter/flutter.git -b beta --depth 1
-      env:
-        - FLUTTER_VERSION="0.8.7"
-      script:
-        - ./flutter/bin/flutter doctor -v
-        - ./flutter/bin/flutter upgrade
-        - ./flutter/bin/flutter packages get
-        - ./flutter/bin/flutter -v build apk
-
-    - os: osx
-      language: generic
-      osx_image: xcode10
-      before_script:
-        # - pip install six
-        - brew update
-        - brew install --HEAD libimobiledevice
-        - brew install ideviceinstaller
-        - brew install ios-deploy
-        - git clone https://github.com/flutter/flutter.git -b beta --depth 1
-      env:
-        - FLUTTER_VERSION="0.8.7"
-      script:
-        - ./flutter/bin/flutter doctor -v
-        - ./flutter/bin/flutter upgrade
-        - ./flutter/bin/flutter doctor -v
-        - ./flutter/bin/flutter packages get
-        - ./flutter/bin/flutter -v build ios --no-codesign
-
+os:
+  - linux
+sudo: false
+addons:
+  apt:
+    # Flutter dependencies
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++6
+      - fonts-droid
+before_script:
+  - git clone https://github.com/flutter/flutter.git -b beta --depth 1
+  - ./flutter/bin/flutter doctor
+  - ./flutter/bin/flutter packages get
+  - gem install coveralls-lcov
+script:
+  - ./flutter/bin/flutter test
+after_success:
+  - coveralls-lcov coverage/lcov.info
 cache:
   directories:
     - $HOME/.pub-cache
