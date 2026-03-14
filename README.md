@@ -12,3 +12,66 @@ To build the project, you need Flutter and required tools such as [Xcode](https:
 To run the project, just call `flutter run`.
 
 To build the project, just call `flutter build ios` or `flutter build android`.
+
+## Technical Details
+
+### Project Structure
+
+```
+lib/
+├── main.dart                   # App entry point and home page with bottom navigation
+├── main_loading.dart           # Loading state widget
+├── main_error.dart             # Error state widget
+├── schedule_loader.dart        # Data models (Session, Program, Speaker) and ScheduleLoader
+├── schedule_page.dart          # Schedule list view (Day 1 / Day 2 tabs)
+├── schedule_session_page.dart  # Session detail page
+├── about_page.dart             # About page with sponsors, staff, and co-organizers
+├── about_coorganizer_card.dart # Co-organizer card widget
+├── about_sns_icon.dart         # Social media icon widget
+├── about_sponsor_card.dart     # Sponsor card widget
+└── about_staff_card.dart       # Staff card widget
+data/
+├── sessions.json               # Conference schedule data
+└── program.json                # Talk abstracts and speaker bios
+```
+
+### Architecture
+
+The app uses Flutter's built-in `StatefulWidget` / `StatelessWidget` pattern for UI and state management.
+
+- **`ScheduleLoader`** is a singleton class that fetches conference schedule data from remote JSON files hosted on GitHub. It exposes two `Stream`s — `onUpdate` and `onError` — which the home page listens to in order to transition between loading, error, and loaded states.
+- The home page (`PlaygroundHomePage`) uses a `BottomNavigationBar` with three tabs: Day 1 schedule, Day 2 schedule, and an About page. Each tab is kept alive using `Offstage` widgets to preserve scroll positions.
+- Session detail data (abstracts, speaker bios) may contain HTML, which is converted to Markdown using `html2md` and rendered with `flutter_markdown`.
+
+### Dependencies
+
+| Package | Version | Purpose |
+|---|---|---|
+| `cupertino_icons` | `^0.1.2` | iOS-style icons |
+| `url_launcher` | `^3.0.3` | Open URLs in the browser |
+| `html2md` | `^0.2.1` | Convert HTML content to Markdown |
+| `flutter_markdown` | `^0.2.0` | Render Markdown text as Flutter widgets |
+
+### Data Sources
+
+The app loads conference data at startup from two JSON files hosted in this repository:
+
+- **Sessions**: `https://raw.githubusercontent.com/zonble/iplayground_app/master/data/sessions.json` — contains the schedule for both conference days, including session titles, presenters, time slots, room assignments, and track information.
+- **Programs**: `https://raw.githubusercontent.com/zonble/iplayground_app/master/data/program.json` — contains talk abstracts, speaker biographies, video links, and slide links.
+
+If either request fails, the app shows an error screen with a retry button.
+
+### Continuous Integration
+
+The project uses [Travis CI](https://travis-ci.org/) to build both platforms on every push:
+
+- **Android** — built on Ubuntu with `flutter build apk` using Android SDK 28 and JDK 8.
+- **iOS** — built on macOS (Xcode 10.1) with `flutter build ios --no-codesign`.
+
+### Testing
+
+The project uses Flutter's built-in `flutter_test` package. Run the tests with:
+
+```
+flutter test
+```
