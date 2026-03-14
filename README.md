@@ -1,5 +1,11 @@
 # iPlayground 18
 
+> **⚠️ This project is no longer maintained and is considered legacy.**
+>
+> This app was built specifically for the **iPlayground 2018** conference, which has long since concluded. The codebase targets a very early version of Flutter (Flutter 1.x) and relies on dependencies that are now several major versions out of date (e.g. `url_launcher ^3.0.3`, `flutter_markdown ^0.2.0`). These packages have had breaking API changes in subsequent releases, so the project will **not** build or run with current Flutter SDK versions without significant migration work.
+>
+> No further development or bug fixes are planned. The repository is kept for historical reference only. If you are looking for a modern Flutter conference app to use as a starting point, we recommend starting from scratch with the current Flutter tooling.
+
 iPlayground is the app for [iPlayground](https://iplayground.io/) conference built with [Flutter](https://flutter.io). The app supports both iOS and Android.
 
 - [iOS version](https://itunes.apple.com/tw/app/iplayground-18/id1367423535?mt=8)
